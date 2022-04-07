@@ -91,3 +91,6 @@ Please crete multi-module maven project in `Idea`, with such modules:
 2. domain
 3. store
 4. consoleApp   
+
+
+Test_AllaKashevarova
