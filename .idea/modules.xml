@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/parent/consoleApp/consoleApp.iml" filepath="$PROJECT_DIR$/parent/consoleApp/consoleApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/parent/domain/domain.iml" filepath="$PROJECT_DIR$/parent/domain/domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onlineStore/Store/Store.iml" filepath="$PROJECT_DIR$/onlineStore/Store/Store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onlineStore/consoleApp/consoleApp.iml" filepath="$PROJECT_DIR$/onlineStore/consoleApp/consoleApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onlineStore/domain/domain.iml" filepath="$PROJECT_DIR$/onlineStore/domain/domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onlineStore/onlineStore.iml" filepath="$PROJECT_DIR$/onlineStore/onlineStore.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/onlinestore-AllaTest.iml" filepath="$PROJECT_DIR$/.idea/onlinestore-AllaTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/parent/store/store.iml" filepath="$PROJECT_DIR$/parent/store/store.iml" />
     </modules>
   </component>
 </project>
