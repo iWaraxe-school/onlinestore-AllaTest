@@ -7,20 +7,32 @@ public abstract class Category {
     private String name;
     private List<Product> productList;
 
+    //this is construtor
     public Category(String name) {
         this.name = name;
         this.productList = new ArrayList<>();
+
     }
 
-    public void printAllProducts(){
+    public String getName() {
+        return name;
+    }
 
-        System.out.println(String.format('s%-------------------------------------------------'));
-        System.out.println("Category: " + name +".");
-        System.out.println(String.format('s%-------------------------------------------------'));
+    public void addProduct(Product product) { //investigate
+        productList.add(product);
 
-        for (Product product: productList){
+    }
+
+    public void printAllProducts() {
+
+        //System.out.println(String.format("s% -------------------------------------------------"));
+        System.out.println("Category: " + name + ".");
+        //System.out.println(String.format("s% -------------------------------------------------"));
+
+        for (Product product : productList) {
             System.out.println(product.toString());
         }
+
 
     }
 }
