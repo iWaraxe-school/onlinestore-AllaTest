@@ -25,9 +25,9 @@ public abstract class Category {
 
     public void printAllProducts() {
 
-        //System.out.println(String.format("s% -------------------------------------------------"));
+        System.out.println("-------------------------------------------------");
         System.out.println("Category: " + name + ".");
-        //System.out.println(String.format("s% -------------------------------------------------"));
+        System.out.println("------------------------------------------------");
 
         for (Product product : productList) {
             System.out.println(product.toString());
