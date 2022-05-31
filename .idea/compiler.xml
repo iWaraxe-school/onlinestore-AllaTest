@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="consoleApp" />
         <module name="Store" />
+        <module name="XMLReader" />
         <module name="domain" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="parent" target="1.5" />
       <module name="Store" target="17" />
       <module name="store" target="1.5" />
+      <module name="XMLReader" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
