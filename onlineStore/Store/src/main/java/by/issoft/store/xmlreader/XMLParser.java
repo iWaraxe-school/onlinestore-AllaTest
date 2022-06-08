@@ -1,4 +1,4 @@
-package by.issoft.xmlreader;
+package by.issoft.store.xmlreader;
 
 
 import javax.xml.parsers.DocumentBuilder;
@@ -31,10 +31,11 @@ public class XMLParser {
 
         String sortTag = "sort";
         Map<String, String> listOfElements = new LinkedHashMap<>();
+        String filePath = "/Users/allakashevarova/IdeaProjects/OnlineStoreAlla/onlineStore/Store/src/main/resources/xml_newconfig.xml";
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(new File("/Users/allakashevarova/IdeaProjects/OnlineStoreAlla/onlineStore/XMLReader/src/main/resources/xml_config.xml"));
+        Document doc = db.parse(filePath);
 
         NodeList elementsByTagName = doc.getElementsByTagName(sortTag);
         Node node = elementsByTagName.item(0);

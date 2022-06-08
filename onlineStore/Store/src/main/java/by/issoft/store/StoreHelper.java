@@ -4,6 +4,8 @@ import by.issoft.domain.Category;
 import by.issoft.domain.Product;
 import org.reflections.Reflections;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,33 +18,24 @@ public class StoreHelper {
         this.store = store;
     }
 
-    public static Set<Category> getCategories(){ //Set generic
+    public static Set<Category> getCategories() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException { //Set generic
         Reflections reflections = new Reflections();
         Set<Category> categories = new HashSet<Category>();
-//написала этот код с помощью коллег и информации на stackoverflow.
-//Но все еще не разобралась, как правильною
-        for(Class reflectedCategory: reflections.getSubTypesOf(Category.class)) {
-            categories.add(reflectedCategory.newInstance());
+
+        for (Class<? extends Category> reflectedCategory : reflections.getSubTypesOf(Category.class)) {
+            categories.add(reflectedCategory.getConstructor().newInstance());
         }
 
         return categories;
 
-        //clarify later
-//        Category bikeCategory = new BikeCategory();
-//        Category milkCategory = new MilkCategory();
-//        Category phoneCategory = new PhoneCategory();
-        //asList method adds new values to the list
-//        return new HashSet<Category>(Arrays.asList(bikeCategory, milkCategory, phoneCategory));
     }
 
-
-
-    public void fillStore(){
+    public void fillStore() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         RandomStorePopulator populator = new RandomStorePopulator();
         Set<Category> categories = getCategories(); //creation of local variable
-        for(Category category: categories){
+        for (Category category : categories) {
             store.addCategory(category);
-            for(int i = 0; i < 10; i++){
+            for (int i = 0; i < 10; i++) {
                 Product product = new Product(
                         populator.getName(category.getName()),
                         populator.getPrice(),
