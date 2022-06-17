@@ -6,6 +6,8 @@ import by.issoft.store.StoreHelper;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 //delete this later
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 public class consoleApp {
@@ -19,6 +21,8 @@ public class consoleApp {
         StoreHelper storeHelper = new StoreHelper(store);
         storeHelper.fillStore();
         store.printAllCategoriesAndProducts();
+
+
         
     }
 }
