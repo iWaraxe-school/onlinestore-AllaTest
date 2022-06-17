@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="consoleApp" />
         <module name="Store" />
-        <module name="XMLReader" />
         <module name="domain" />
       </profile>
     </annotationProcessing>

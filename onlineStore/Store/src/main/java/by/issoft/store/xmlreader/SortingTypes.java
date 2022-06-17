@@ -1,4 +1,4 @@
-package by.issoft.xmlreader;
+package by.issoft.store.xmlreader;
 
 import java.util.LinkedHashMap;
 

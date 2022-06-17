@@ -9,6 +9,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/onlineStore/XMLReader/pom.xml" />
         <option value="$PROJECT_DIR$/parent/domain/pom.xml" />
         <option value="$PROJECT_DIR$/parent/store/pom.xml" />
       </set>

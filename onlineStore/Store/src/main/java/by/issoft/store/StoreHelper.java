@@ -4,9 +4,14 @@ import by.issoft.domain.Category;
 import by.issoft.domain.Product;
 import org.reflections.Reflections;
 
-import java.lang.reflect.Constructor;
+
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.lang.reflect.WildcardType;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
+
 
 public class StoreHelper {
     Store store;
@@ -15,11 +20,15 @@ public class StoreHelper {
         this.store = store;
     }
 
-    public static Set<Category> getCategories() { //Set generic
-        Reflections reflections = new Reflections("by.issoft.domain.categories");
 
+    public static Set<Category> getCategories() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException { //Set generic
+        Reflections reflections = new Reflections();
         Set<Category> categories = new HashSet<Category>();
-        //Set<Class<? extends Category>> subTypesOf = reflections.getSubTypesOf(Category.class);
+
+        for (Class<? extends Category> reflectedCategory : reflections.getSubTypesOf(Category.class)) {
+            categories.add(reflectedCategory.getConstructor().newInstance());
+        }
+
 
         for (Class reflectedCategory : reflections.getSubTypesOf(Category.class)) {
             try {
@@ -42,27 +51,21 @@ public class StoreHelper {
             return categories;
         }
 
-            //clarify later
-//        Category bikeCategory = new BikeCategory();
-//        Category milkCategory = new MilkCategory();
-//        Category phoneCategory = new PhoneCategory();
-            //asList method adds new values to the list
-//        return new HashSet<Category>(Arrays.asList(bikeCategory, milkCategory, phoneCategory));
 
+    }
 
+    public void fillStore() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        RandomStorePopulator populator = new RandomStorePopulator();
+        Set<Category> categories = getCategories(); //creation of local variable
+        for (Category category : categories) {
+            store.addCategory(category);
+            for (int i = 0; i < 10; i++) {
+                Product product = new Product(
+                        populator.getName(category.getName()),
+                        populator.getPrice(),
+                        populator.getRate());
+                category.addProduct(product);
 
-        public void fillStore () {
-            RandomStorePopulator populator = new RandomStorePopulator();
-            Set<Category> categories = getCategories(); //creation of local variable
-            for (Category category : categories) {
-                store.addCategory(category);
-                for (int i = 0; i < 10; i++) {
-                    Product product = new Product(
-                            populator.getName(category.getName()),
-                            populator.getPrice(),
-                            populator.getRate());
-                    category.addProduct(product);
-                }
             }
 
 
