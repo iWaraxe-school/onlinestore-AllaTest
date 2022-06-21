@@ -4,6 +4,7 @@ import by.issoft.domain.Category;
 import by.issoft.domain.Product;
 import org.reflections.Reflections;
 
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.WildcardType;
 import java.util.Arrays;
@@ -11,12 +12,14 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 
+
 public class StoreHelper {
     Store store;
 
     public StoreHelper(Store store) {
         this.store = store;
     }
+
 
     public static Set<Category> getCategories() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException { //Set generic
         Reflections reflections = new Reflections();
@@ -26,7 +29,28 @@ public class StoreHelper {
             categories.add(reflectedCategory.getConstructor().newInstance());
         }
 
-        return categories;
+
+        for (Class reflectedCategory : reflections.getSubTypesOf(Category.class)) {
+            try {
+                Constructor constructor = reflectedCategory.getConstructor();
+                Object o = constructor.newInstance();
+                Category category = (Category) o;
+                categories.add(category);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+            catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+            return categories;
+        }
+
 
     }
 
@@ -41,9 +65,11 @@ public class StoreHelper {
                         populator.getPrice(),
                         populator.getRate());
                 category.addProduct(product);
+
             }
+
+
         }
+
+
     }
-
-
-}
