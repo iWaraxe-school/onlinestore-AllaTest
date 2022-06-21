@@ -14,7 +14,12 @@ public abstract class Category {
 
     }
 
+    public List<Product> getProductList() {
+        return productList;
+    }
+
     public String getName() {
+
         return name;
     }
 
