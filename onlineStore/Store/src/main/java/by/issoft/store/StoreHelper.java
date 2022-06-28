@@ -5,6 +5,7 @@ import by.issoft.domain.Product;
 import org.reflections.Reflections;
 
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.WildcardType;
 import java.util.Arrays;
@@ -22,7 +23,7 @@ public class StoreHelper {
 
 
     public static Set<Category> getCategories() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException { //Set generic
-        Reflections reflections = new Reflections();
+        Reflections reflections = new Reflections("by.issoft.domain.categories");
         Set<Category> categories = new HashSet<Category>();
 
         for (Class<? extends Category> reflectedCategory : reflections.getSubTypesOf(Category.class)) {
@@ -52,7 +53,7 @@ public class StoreHelper {
         }
 
 
-    }
+
 
     public void fillStore() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         RandomStorePopulator populator = new RandomStorePopulator();
@@ -73,3 +74,5 @@ public class StoreHelper {
 
 
     }
+
+}
