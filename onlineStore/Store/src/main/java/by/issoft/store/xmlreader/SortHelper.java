@@ -14,7 +14,7 @@ import java.util.Map;
 public class SortHelper {
     Store store;
 
-    public SortHelper() {
+    public SortHelper(Store store) {
 
         this.store = store;
     }
@@ -66,7 +66,7 @@ public class SortHelper {
         return allProductList;
     }
 
-    public void sortXML(Store store) throws ParserConfigurationException, IOException, SAXException {
+    public void sortXML() throws ParserConfigurationException, IOException, SAXException {
         XMLParser parser = new XMLParser();
         Map<String, String> configMap = parser.getXMLEntities();
         System.out.println(configMap);
@@ -78,6 +78,16 @@ public class SortHelper {
             System.out.println(product);
         }
 
+    }
+
+    public void sortTop5 (){
+        List<Product> allProductList = store.getAllProductsList();
+        allProductList.sort(Comparator.comparing(Product::getPrice).reversed());
+
+
+        for (Product product: allProductList.subList(0,5)){
+            System.out.println(product);
+        }
 
 
     }
