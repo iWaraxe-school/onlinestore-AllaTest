@@ -1,13 +1,12 @@
 package by.issoft.store;
 
-import by.issoft.domain.Category;
-import by.issoft.domain.Product;
 import com.github.javafaker.Faker;
 
 public class RandomStorePopulator {
     Faker faker = new Faker();
 
     public double getPrice() {
+
         return faker.number().randomDouble(2, 1, 90);
     }
 
@@ -29,6 +28,7 @@ public class RandomStorePopulator {
     }
 
     public double getRate() {
+
         return faker.number().randomDouble(1, 0, 5);
     }
 

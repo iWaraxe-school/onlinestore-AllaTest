@@ -13,8 +13,8 @@ public class consoleApp {
 
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 
-
-        Store store = new Store();
+// Is that correct usage of Singleton pattern? In line 17 I wanted to create a new Store object.
+        Store store = Store.getInstance();
         StoreHelper storeHelper = new StoreHelper(store);
         storeHelper.fillStore();
         store.printAllCategoriesAndProducts();
