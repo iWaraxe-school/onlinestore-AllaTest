@@ -19,7 +19,7 @@ public class consoleApp {
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, ParserConfigurationException, IOException, SAXException {
 
 
-        Store store = new Store();
+        Store store = Store.getInstance();
         StoreHelper storeHelper = new StoreHelper(store);
         storeHelper.fillStore();
         store.printAllCategoriesAndProducts();

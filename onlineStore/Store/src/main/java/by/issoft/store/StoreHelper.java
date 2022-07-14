@@ -41,16 +41,14 @@ public class StoreHelper {
                 e.printStackTrace();
             } catch (InstantiationException e) {
                 e.printStackTrace();
-            }
-            catch (IllegalAccessException e) {
+            } catch (IllegalAccessException e) {
                 e.printStackTrace();
-            }
-            catch (InvocationTargetException e) {
+            } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
-            return categories;
-        }
+        return categories;
+    }
 
 
 
@@ -69,10 +67,10 @@ public class StoreHelper {
 
             }
 
-
         }
-
-
     }
+
+
+}
 
 }
