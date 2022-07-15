@@ -8,10 +8,42 @@ public class Product {
     private double price;
     private double rate;
 
-    public Product(String name, double price, double rate) {
-        this.name = name;
-        this.price = price;
-        this.rate = rate;
+    public static Builder newBuilder() {
+        return new Product().new Builder();
+    }
+
+    public class Builder {
+        private String name;
+        private double price;
+        private double rate;
+
+
+        private Builder() {
+
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setPrice(double price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder setRate(double rate) {
+            this.rate = rate;
+            return this;
+        }
+
+        public Product build(){
+            Product.this.name = this.name;
+            Product.this.price = this.price;
+            Product.this.rate = this.rate;
+        }
+
+
     }
 
     //added getters ans setters
