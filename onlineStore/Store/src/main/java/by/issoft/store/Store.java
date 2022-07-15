@@ -2,7 +2,6 @@ package by.issoft.store;
 
 import by.issoft.domain.Category;
 import by.issoft.domain.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,18 @@ public class Store {
     }
 
     private List<Category> categoryList = new ArrayList<>();
+
+
+    //Pattern Singleton
+    private static class SingletonHelper() {
+        private static final Store STORE_INSTANCE = new Store();
+    }
+
+    public static Store getInstance(){
+        return SingletonHelper.STORE_INSTANCE;
+    }
+
+
 
 
     public void printAllCategoriesAndProducts() {

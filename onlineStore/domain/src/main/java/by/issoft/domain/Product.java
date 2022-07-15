@@ -8,6 +8,7 @@ public class Product {
     private double price;
     private double rate;
 
+
     public static Builder newBuilder() {
         return new Product().new Builder();
     }
@@ -27,15 +28,18 @@ public class Product {
             return this;
         }
 
-        public Builder setPrice(double price) {
+
+        public Builder setPrice(double price){
             this.price = price;
             return this;
         }
 
-        public Builder setRate(double rate) {
+
+        public Builder setRate(double rate){
             this.rate = rate;
             return this;
         }
+
 
         public Product build(){
             Product.this.name = this.name;
@@ -44,7 +48,11 @@ public class Product {
         }
 
 
+
     }
+
+
+
 
     //added getters ans setters
 
@@ -71,6 +79,8 @@ public class Product {
     public void setRate(Double rate) {
         this.rate = rate;
     }
+
+
     @Override
     public String toString() {
 
@@ -79,5 +89,5 @@ public class Product {
     }
 
 
-    }
+}
 

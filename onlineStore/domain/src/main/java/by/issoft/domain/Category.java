@@ -23,7 +23,7 @@ public abstract class Category {
         return name;
     }
 
-    public void addProduct(Product product) { //investigate
+    public void addProduct(Product product) {
         productList.add(product);
 
     }
