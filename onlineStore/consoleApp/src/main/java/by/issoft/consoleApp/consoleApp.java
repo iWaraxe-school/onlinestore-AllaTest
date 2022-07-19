@@ -1,5 +1,8 @@
 package by.issoft.consoleApp;
 
+import by.issoft.consoleApp.command.QuitCommand;
+import by.issoft.consoleApp.command.SortCommand;
+import by.issoft.consoleApp.command.Top5Command;
 import by.issoft.store.Store;
 import by.issoft.store.StoreHelper;
 import by.issoft.store.xmlreader.SortHelper;
@@ -29,9 +32,7 @@ public class consoleApp {
         //not sure if I had to print sorted List here
 
 
-        SortHelper sorthelper = new SortHelper(store);
-
-
+        SortHelper sortHelper = new SortHelper(store);
 
 
         System.out.println("Enter some of the following command: Sort/Top5 or Quit");
@@ -46,14 +47,14 @@ public class consoleApp {
 
             switch (command) {
                 case "Sort":
-                    sorthelper.sortXML();
+                    new SortCommand(sortHelper).execute();
                     break;
                 case "Quit":
-                    flag = false;
+                    new QuitCommand(flag).execute();
                     break;
                 case "Top5":
 
-                    sorthelper.sortTop5();
+                    new Top5Command(sortHelper).execute();
 
                     break;
                 default:

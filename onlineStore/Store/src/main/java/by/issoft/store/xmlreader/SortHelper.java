@@ -19,7 +19,7 @@ public class SortHelper {
         this.store = store;
     }
 
-    //what is sortedProductList entity?
+
     public List<Product> sortedProductList(Map<String, String> mapFromXML) {
 
 
@@ -74,18 +74,18 @@ public class SortHelper {
         System.out.println("-------------------------------");
         System.out.println("SORT PRODUCTS SEQUENTIAL RIGHT");
         System.out.println("-------------------------------");
-        for (Product product: productsSortedByXML) {
+        for (Product product : productsSortedByXML) {
             System.out.println(product);
         }
 
     }
 
-    public void sortTop5 (){
+    public void sortTop5() {
         List<Product> allProductList = store.getAllProductsList();
         allProductList.sort(Comparator.comparing(Product::getPrice).reversed());
 
 
-        for (Product product: allProductList.subList(0,5)){
+        for (Product product : allProductList.subList(0, 5)) {
             System.out.println(product);
         }
 
