@@ -8,19 +8,17 @@ import java.util.List;
 
 public class Store {
 
-    private Store() {
+    private List<Category> categoryList = new ArrayList<>();
 
-    }
 
-    private static class SingletonHelper{
+    //Pattern Singleton
+    private static class SingletonHelper {
         private static final Store STORE_INSTANCE = new Store();
     }
 
-    public static Store getInstance(){
+    public static Store getInstance() {
         return SingletonHelper.STORE_INSTANCE;
     }
-
-    private List<Category> categoryList = new ArrayList<>();
 
 
     public void printAllCategoriesAndProducts() {

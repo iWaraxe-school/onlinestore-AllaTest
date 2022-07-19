@@ -7,7 +7,7 @@ public abstract class Category {
     private String name;
     private List<Product> productList;
 
-    //this is construtor
+    //this is constructor
     public Category(String name) {
         this.name = name;
         this.productList = new ArrayList<>();
