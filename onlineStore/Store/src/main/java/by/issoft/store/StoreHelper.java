@@ -8,10 +8,7 @@ import org.reflections.Reflections;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.WildcardType;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
+import java.util.*;
 
 
 public class StoreHelper {
@@ -41,18 +38,14 @@ public class StoreHelper {
                 e.printStackTrace();
             } catch (InstantiationException e) {
                 e.printStackTrace();
-            }
-            catch (IllegalAccessException e) {
+            } catch (IllegalAccessException e) {
                 e.printStackTrace();
-            }
-            catch (InvocationTargetException e) {
+            } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
-            return categories;
-        }
-
-
+        return categories;
+    }
 
 
     public void fillStore() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
@@ -61,18 +54,29 @@ public class StoreHelper {
         for (Category category : categories) {
             store.addCategory(category);
             for (int i = 0; i < 10; i++) {
-                Product product = new Product(
-                        populator.getName(category.getName()),
-                        populator.getPrice(),
-                        populator.getRate());
+                Product product = Product.newBuilder()
+                        .setName(populator.getName(category.getName()))
+                        .setPrice(populator.getPrice())
+                        .setRate(populator.getRate())
+                        .build();
                 category.addProduct(product);
+
+
+
+
+
+
+
+//                        populator.getPrice(),
+//                        populator.getRate());
+//                category.addProduct(product);
 
             }
 
-
         }
-
-
     }
+
+
+}
 
 }
