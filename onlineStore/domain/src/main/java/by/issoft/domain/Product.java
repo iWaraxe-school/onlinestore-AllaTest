@@ -1,8 +1,5 @@
 package by.issoft.domain;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class Product {
     private String name;
     private double price;

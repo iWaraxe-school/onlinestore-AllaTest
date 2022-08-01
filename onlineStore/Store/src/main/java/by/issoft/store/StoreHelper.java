@@ -15,6 +15,7 @@ public class StoreHelper {
     Store store;
 
     public StoreHelper(Store store) {
+
         this.store = store;
     }
 
@@ -61,15 +62,6 @@ public class StoreHelper {
                         .build();
                 category.addProduct(product);
 
-
-
-
-
-
-
-//                        populator.getPrice(),
-//                        populator.getRate());
-//                category.addProduct(product);
 
             }
 

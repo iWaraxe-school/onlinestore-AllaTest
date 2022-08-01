@@ -9,7 +9,15 @@ import java.util.List;
 public class Store {
 
     private List<Category> categoryList = new ArrayList<>();
+    private List<Product> purchasedProducts = new ArrayList<>();
 
+    public Store(List<Product> purchasedProducts) {
+        this.purchasedProducts = purchasedProducts;
+    }
+
+    public List<Product> getPurchasedProducts() {
+        return purchasedProducts;
+    }
 
     //Pattern Singleton
     private static class SingletonHelper {
@@ -29,7 +37,13 @@ public class Store {
     }
 
     public void addCategory(Category category) {
+
         categoryList.add(category);
+    }
+
+    public void addProduct(Product product) {
+
+        purchasedProducts.add(product);
     }
 
     public List<Product> getAllProductsList() {

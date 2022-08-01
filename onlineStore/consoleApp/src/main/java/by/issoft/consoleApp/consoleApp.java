@@ -3,6 +3,9 @@ package by.issoft.consoleApp;
 import by.issoft.consoleApp.command.QuitCommand;
 import by.issoft.consoleApp.command.SortCommand;
 import by.issoft.consoleApp.command.Top5Command;
+import by.issoft.domain.Product;
+import by.issoft.store.OrderCleanupHelper;
+import by.issoft.store.OrderPopulator;
 import by.issoft.store.Store;
 import by.issoft.store.StoreHelper;
 import by.issoft.store.xmlreader.SortHelper;
@@ -16,6 +19,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 //delete this later
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class consoleApp {
 
@@ -31,6 +36,7 @@ public class consoleApp {
 
 
         SortHelper sortHelper = new SortHelper(store);
+        OrderPopulator orderPopulator = new OrderPopulator(store);
 
 
         System.out.println("Enter some of the following command: Sort/Top5 or Quit");
@@ -38,6 +44,13 @@ public class consoleApp {
 //Interactive: Scanner; BufferedReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         boolean flag = true;
+
+        Timer timer = new Timer;
+        TimerTask orderCleanupHelper = TimerTask.run();
+        //I don't know where exactly to use this timer and what exactly method to use?
+        timer.schedule(orderCleanupHelper, 60000, 120000);
+        timer.schedule(orderCleanupHelper,120000);
+
 
         while (flag) {
             String command = reader.readLine();
@@ -51,8 +64,10 @@ public class consoleApp {
                     new QuitCommand(flag).execute();
                     break;
                 case "Top5":
-
                     new Top5Command(sortHelper).execute();
+                    break;
+                case "Order":
+                    new Thread(orderPopulator).start();
 
                     break;
                 default:
