@@ -32,6 +32,7 @@ public class consoleApp {
         storeHelper.fillStore();
         store.printAllCategoriesAndProducts();
 
+
         //not sure if I had to print sorted List here
 
 
@@ -39,17 +40,16 @@ public class consoleApp {
         OrderPopulator orderPopulator = new OrderPopulator(store);
 
 
-        System.out.println("Enter some of the following command: Sort/Top5 or Quit");
+        System.out.println("Enter some of the following command: Sort/Top5/Order or Quit:");
 
 //Interactive: Scanner; BufferedReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         boolean flag = true;
 
-        Timer timer = new Timer;
-        TimerTask orderCleanupHelper = TimerTask.run();
-        //I don't know where exactly to use this timer and what exactly method to use?
-        timer.schedule(orderCleanupHelper, 60000, 120000);
-        timer.schedule(orderCleanupHelper,120000);
+        Timer timer = new Timer();
+        timer.schedule(new OrderCleanupHelper(store), 60000, 120000);
+        //add logging on cleanup (and show list of purchases before Purchase and after)
+
 
 
         while (flag) {
@@ -62,12 +62,21 @@ public class consoleApp {
                     break;
                 case "Quit":
                     new QuitCommand(flag).execute();
+                    timer.cancel();
+                    System.out.println("Execution has been stopped");
                     break;
                 case "Top5":
                     new Top5Command(sortHelper).execute();
                     break;
                 case "Order":
+                    //System.out.println("Divider1");
+
                     new Thread(orderPopulator).start();
+                    //System.out.println("Divider2");
+                    new Thread(orderPopulator).start();
+                    //System.out.println("Divider3");
+
+                    //add logging - what product and thread
 
                     break;
                 default:

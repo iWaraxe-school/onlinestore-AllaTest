@@ -6,6 +6,7 @@ public class Product {
     private double rate;
 
     public static Builder newBuilder() {
+
         return new Product().new Builder();
     }
 
@@ -38,6 +39,8 @@ public class Product {
             Product.this.name = this.name;
             Product.this.price = this.price;
             Product.this.rate = this.rate;
+
+            return Product.this;
         }
 
 
