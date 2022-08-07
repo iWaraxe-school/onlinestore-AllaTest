@@ -3,6 +3,9 @@ package by.issoft.consoleApp;
 import by.issoft.consoleApp.command.QuitCommand;
 import by.issoft.consoleApp.command.SortCommand;
 import by.issoft.consoleApp.command.Top5Command;
+import by.issoft.domain.Product;
+import by.issoft.store.OrderCleanupHelper;
+import by.issoft.store.OrderPopulator;
 import by.issoft.store.Store;
 import by.issoft.store.StoreHelper;
 import by.issoft.store.xmlreader.SortHelper;
@@ -16,6 +19,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 //delete this later
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class consoleApp {
 
@@ -29,17 +34,25 @@ public class consoleApp {
         storeHelper.fillStore();
         store.printAllCategoriesAndProducts();
 
+
         //not sure if I had to print sorted List here
 
 
         SortHelper sortHelper = new SortHelper(store);
+        OrderPopulator orderPopulator = new OrderPopulator(store);
 
 
-        System.out.println("Enter some of the following command: Sort/Top5 or Quit");
+        System.out.println("Enter some of the following command: Sort/Top5/Order or Quit:");
 
 //Interactive: Scanner; BufferedReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         boolean flag = true;
+
+        Timer timer = new Timer();
+        timer.schedule(new OrderCleanupHelper(store), 60000, 120000);
+        //add logging on cleanup (and show list of purchases before Purchase and after)
+
+
 
         while (flag) {
             String command = reader.readLine();
@@ -51,10 +64,21 @@ public class consoleApp {
                     break;
                 case "Quit":
                     new QuitCommand(flag).execute();
+                    timer.cancel();
+                    System.out.println("Execution has been stopped");
                     break;
                 case "Top5":
-
                     new Top5Command(sortHelper).execute();
+                    break;
+                case "Order":
+                    //System.out.println("Divider1");
+
+                    new Thread(orderPopulator).start();
+                    //System.out.println("Divider2");
+                    new Thread(orderPopulator).start();
+                    //System.out.println("Divider3");
+
+                    //add logging - what product and thread
 
                     break;
                 default:

@@ -4,7 +4,7 @@ public interface Chain {
 
     public void setNextChain (Chain chain);
 
-    public void sortByType()
+    public void sortByType();
 
     }
-}
+
