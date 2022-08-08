@@ -31,15 +31,17 @@ public class OrderPopulator implements Runnable {
     public void run() {
 
         //Question: Why I get 2 tread logs in a row and then 2 executions of System.out.println("The following product has been added: " + product.getName()); ?
-        Thread thread = new Thread();
-        log.info("Thread " + thread.getName() + " has been started");
+        //Thread thread = new Thread();
+
+        Thread currentThread = Thread.currentThread();
+        log.info("Thread " + currentThread.getName() + " has been started");
 
         List<Product> allProductsList = store.getAllProductsList();
         Product product = allProductsList.get(threadLocalRandom.nextInt(allProductsList.size()));
         store.addPurchasedProduct(product);
         System.out.println("The following product has been added: "+ product.getName());
         Thread.sleep(7000);
-        log.info("Thread " + thread.getName() + " has been finished");
+        log.info("Thread " + currentThread.getName() + " has been finished");
 
 
     }
