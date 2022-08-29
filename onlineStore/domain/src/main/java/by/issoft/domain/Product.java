@@ -45,6 +45,7 @@ public class Product {
             Product.this.rate = this.rate;
 
             return Product.this;
+
         }
 
 
