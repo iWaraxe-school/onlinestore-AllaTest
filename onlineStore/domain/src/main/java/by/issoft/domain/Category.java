@@ -11,7 +11,6 @@ public abstract class Category {
     public Category(String name) {
         this.name = name;
         this.productList = new ArrayList<>();
-
     }
 
     public List<Product> getProductList() {
@@ -19,13 +18,11 @@ public abstract class Category {
     }
 
     public String getName() {
-
         return name;
     }
 
     public void addProduct(Product product) {
         productList.add(product);
-
     }
 
     public void printAllProducts() {
@@ -37,7 +34,5 @@ public abstract class Category {
         for (Product product : productList) {
             System.out.println(product.toString());
         }
-
-
     }
 }

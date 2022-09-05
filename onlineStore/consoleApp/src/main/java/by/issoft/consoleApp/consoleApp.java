@@ -29,7 +29,10 @@ public class consoleApp {
         DatabaseHelper databaseHelper = new DatabaseHelper();
         databaseHelper.registerDriver();
         databaseHelper.openConnection();
+        databaseHelper.clearDatabase();
         databaseHelper.createTables();
+        //Looks like the system does not want to execute this method at all:
+        databaseHelper.populateDatabase();
 
 
 
