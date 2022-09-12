@@ -19,7 +19,7 @@ public class DatabaseHelper {
 
     //  Database credentials
     static final String USER = "root";
-    static final String PASS = "Alussql2099!";
+    static final String PASS = "";
 
     //create constants
     static Connection CONNECTION = null;
@@ -170,7 +170,6 @@ public class DatabaseHelper {
             e.printStackTrace();
         }
     }
-
     //check why there are 6 CATEGORIES instead of 3. Reflections(?)
     //print all products and categories
 
@@ -199,7 +198,6 @@ public class DatabaseHelper {
                 System.out.println("Product Name: " + name + " | " + "Category: " + categoryName + " | " + "Price: " + price + " | " + "Rate: " + rate);
             }
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -210,9 +208,7 @@ public class DatabaseHelper {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
 }
 
 
