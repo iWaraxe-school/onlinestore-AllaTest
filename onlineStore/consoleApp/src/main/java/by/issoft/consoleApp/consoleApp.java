@@ -3,6 +3,7 @@ package by.issoft.consoleApp;
 import by.issoft.consoleApp.command.QuitCommand;
 import by.issoft.consoleApp.command.SortCommand;
 import by.issoft.consoleApp.command.Top5Command;
+import by.issoft.domain.Category;
 import by.issoft.store.*;
 import by.issoft.store.xmlreader.SortHelper;
 import org.xml.sax.SAXException;
@@ -29,7 +30,11 @@ public class consoleApp {
         DatabaseHelper databaseHelper = new DatabaseHelper();
         databaseHelper.registerDriver();
         databaseHelper.openConnection();
+        databaseHelper.clearDatabase();
         databaseHelper.createTables();
+        //Looks like the system does not want to execute this method at all:
+        databaseHelper.populateDatabase();
+        databaseHelper.printProductsFromDatabase();
 
 
 

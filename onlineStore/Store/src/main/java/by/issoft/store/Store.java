@@ -11,6 +11,10 @@ public class Store {
     private List<Category> categoryList = new ArrayList<>();
     private List<Product> purchasedProducts = new CopyOnWriteArrayList<>();
 
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
     public List<Product> getPurchasedProducts() {
         return purchasedProducts;
     }
