@@ -36,47 +36,50 @@ public class consoleApp {
         databaseHelper.populateDatabase();
         databaseHelper.printProductsFromDatabase();
 
+        //Start server
+        ServerHelper serverHelper = new ServerHelper();
+        serverHelper.startServer();
 
 
         SortHelper sortHelper = new SortHelper(store);
         OrderPopulator orderPopulator = new OrderPopulator(store);
 
 
-        System.out.println("Enter some of the following command: Sort/Top5/Order or Quit:");
+//        System.out.println("Enter some of the following command: Sort/Top5/Order or Quit:");
 
 //Interactive: Scanner; BufferedReader
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        boolean flag = true;
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//        boolean flag = true;
 
         //Timer timer = new Timer();
         //timer.schedule(new OrderCleanupHelper(store), 60000, 120000);
         //add logging on cleanup (and show list of purchases before Purchase and after)
 
 
-        while (flag) {
-            String command = reader.readLine();
-
-
-            switch (command) {
-                case "Sort":
-                    new SortCommand(sortHelper).execute();
-                    break;
-                case "Quit":
-                    new QuitCommand(flag).execute();
-                    //timer.cancel();
-                    System.out.println("Execution has been stopped");
-                    break;
-                case "Top5":
-                    new Top5Command(sortHelper).execute();
-                    break;
-                case "Order":
-                    new Thread(orderPopulator).start();
-                    break;
-                default:
-                    System.out.println("This command is not recognized");
-            }
-
-        }
+//        while (flag) {
+//            String command = reader.readLine();
+//
+//
+//            switch (command) {
+//                case "Sort":
+//                    new SortCommand(sortHelper).execute();
+//                    break;
+//                case "Quit":
+//                    new QuitCommand(flag).execute();
+//                    //timer.cancel();
+//                    System.out.println("Execution has been stopped");
+//                    break;
+//                case "Top5":
+//                    new Top5Command(sortHelper).execute();
+//                    break;
+//                case "Order":
+//                    new Thread(orderPopulator).start();
+//                    break;
+//                default:
+//                    System.out.println("This command is not recognized");
+//            }
+//
+//        }
 
     }
 }
