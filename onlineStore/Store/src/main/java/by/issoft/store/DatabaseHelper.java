@@ -26,6 +26,8 @@ public class DatabaseHelper {
     static Statement STATEMENT = null;
     static ResultSet RESULTSET = null;
 
+
+
     // STEP 1: Register JDBC driver
     public void registerDriver() {
         try {

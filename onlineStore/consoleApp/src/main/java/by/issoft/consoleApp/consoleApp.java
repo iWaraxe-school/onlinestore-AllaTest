@@ -5,6 +5,8 @@ import by.issoft.consoleApp.command.SortCommand;
 import by.issoft.consoleApp.command.Top5Command;
 import by.issoft.domain.Category;
 import by.issoft.store.*;
+import by.issoft.store.config.Configuration;
+import by.issoft.store.config.ConfigurationManager;
 import by.issoft.store.xmlreader.SortHelper;
 import org.xml.sax.SAXException;
 
@@ -27,18 +29,27 @@ public class consoleApp {
         //store.printAllCategoriesAndProducts();
 
         //DB operations:
-        DatabaseHelper databaseHelper = new DatabaseHelper();
-        databaseHelper.registerDriver();
-        databaseHelper.openConnection();
-        databaseHelper.clearDatabase();
-        databaseHelper.createTables();
-        //Looks like the system does not want to execute this method at all:
-        databaseHelper.populateDatabase();
-        databaseHelper.printProductsFromDatabase();
+//        DatabaseHelper databaseHelper = new DatabaseHelper();
+//        databaseHelper.registerDriver();
+//        databaseHelper.openConnection();
+//        databaseHelper.clearDatabase();
+//        databaseHelper.createTables();
+//        //Looks like the system does not want to execute this method at all:
+//        databaseHelper.populateDatabase();
+//        databaseHelper.printProductsFromDatabase();
+
+        System.out.println("Server starting...");
+        ConfigurationManager.getInstance().loadConfigurationFile("/Users/allakashevarova/IdeaProjects/OnlineStoreAlla/onlineStore/consoleApp/src/main/resources/http.json");
+        Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
+
+        System.out.println("Using Port" + conf.getPort());
+        System.out.println("Using WebRoot" + conf.getWebroot());
 
         //Start server
-        ServerHelper serverHelper = new ServerHelper();
-        serverHelper.startServer();
+//        ServerHelper serverHelper = new ServerHelper();
+//        serverHelper.startServer();
+
+
 
 
         SortHelper sortHelper = new SortHelper(store);
