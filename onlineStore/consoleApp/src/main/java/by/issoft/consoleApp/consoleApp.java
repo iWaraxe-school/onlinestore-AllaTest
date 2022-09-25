@@ -11,11 +11,11 @@ import by.issoft.store.xmlreader.SortHelper;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Timer;
 
 public class consoleApp {
@@ -39,11 +39,38 @@ public class consoleApp {
 //        databaseHelper.printProductsFromDatabase();
 
         System.out.println("Server starting...");
+
         ConfigurationManager.getInstance().loadConfigurationFile("/Users/allakashevarova/IdeaProjects/OnlineStoreAlla/onlineStore/consoleApp/src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
         System.out.println("Using Port" + conf.getPort());
         System.out.println("Using WebRoot" + conf.getWebroot());
+
+        ServerSocket serverSocket = new ServerSocket(conf.getPort());
+        Socket socket = serverSocket.accept();
+
+        InputStream inputStream = socket.getInputStream();
+        OutputStream outputStream = socket.getOutputStream();
+
+        // TODO: send the html page to the browser (in learning purposes)
+
+        String html = "<html><head><title>Simple Java HTTP Server</title></head><body><h1>Test Page</h1></body></html>";
+
+        final String CRLF = "/n/r";
+
+        String response =
+                "HTTP/1.1 200 OK" + CRLF + //Status Line : HTTP VERSION RESPONSE CODE RESPONSE MESSAGE
+                "Content-Length: " + html.getBytes().length + CRLF + // HEADER
+                        CRLF +
+                        html +
+                        CRLF + CRLF;
+
+        outputStream.write(response.getBytes());
+
+        inputStream.close();
+        outputStream.close();
+        socket.close();;
+        serverSocket.close();
 
         //Start server
 //        ServerHelper serverHelper = new ServerHelper();
