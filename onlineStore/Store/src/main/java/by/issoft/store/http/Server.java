@@ -9,7 +9,8 @@ public class Server {
 
     HttpServer server;
 
-    {
+    public void createServer(){
+
         try {
             server = HttpServer.create(new InetSocketAddress(8080),0);
             // TODO create CategoriesHandler class
