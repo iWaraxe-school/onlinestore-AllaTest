@@ -26,7 +26,7 @@ public class consoleApp {
         Store store = Store.getInstance();
         StoreHelper storeHelper = new StoreHelper(store);
         storeHelper.fillStore();
-        //store.printAllCategoriesAndProducts();
+        store.printAllCategoriesAndProducts();
 
         //DB operations:
 //        DatabaseHelper databaseHelper = new DatabaseHelper();
@@ -37,14 +37,15 @@ public class consoleApp {
 //        //Looks like the system does not want to execute this method at all:
 //        databaseHelper.populateDatabase();
 //        databaseHelper.printProductsFromDatabase();
-
+//
+/**
         System.out.println("Server starting...");
 
         ConfigurationManager.getInstance().loadConfigurationFile("/Users/allakashevarova/IdeaProjects/OnlineStoreAlla/onlineStore/consoleApp/src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
-        System.out.println("Using Port" + conf.getPort());
-        System.out.println("Using WebRoot" + conf.getWebroot());
+        System.out.println("Using Port " + conf.getPort());
+        System.out.println("Using WebRoot " + conf.getWebroot());
 
         ServerSocket serverSocket = new ServerSocket(conf.getPort());
         Socket socket = serverSocket.accept();
@@ -56,7 +57,7 @@ public class consoleApp {
 
         String html = "<html><head><title>Simple Java HTTP Server</title></head><body><h1>Test Page</h1></body></html>";
 
-        final String CRLF = "/n/r";
+        final String CRLF = "\r\n";
 
         String response =
                 "HTTP/1.1 200 OK" + CRLF + //Status Line : HTTP VERSION RESPONSE CODE RESPONSE MESSAGE
@@ -67,10 +68,11 @@ public class consoleApp {
 
         outputStream.write(response.getBytes());
 
+
         inputStream.close();
         outputStream.close();
-        socket.close();;
-        serverSocket.close();
+        socket.close();
+        serverSocket.close();*/
 
         //Start server
 //        ServerHelper serverHelper = new ServerHelper();

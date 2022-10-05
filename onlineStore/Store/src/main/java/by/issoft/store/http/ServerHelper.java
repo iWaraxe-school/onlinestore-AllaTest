@@ -1,10 +1,11 @@
-package by.issoft.store;
+package by.issoft.store.http;
 
 import java.net.*;
 import java.io.*;
 import java.util.*;
 
 public class ServerHelper {
+    /**
 
     static final int port = 8080;
     static final String newLine = "\r\n";
@@ -61,7 +62,7 @@ public class ServerHelper {
             System.err.println("Could not start server: " + tr);
         }
 
-    }
+    } */
 }
 
 

@@ -48,12 +48,7 @@ public class Product {
 
         }
 
-
-
     }
-
-
-
 
     //added getters ans setters
 
