@@ -7,6 +7,8 @@ import by.issoft.domain.Category;
 import by.issoft.store.*;
 import by.issoft.store.config.Configuration;
 import by.issoft.store.config.ConfigurationManager;
+import by.issoft.store.http.HttpClient;
+import by.issoft.store.http.Server;
 import by.issoft.store.xmlreader.SortHelper;
 import org.xml.sax.SAXException;
 
@@ -16,17 +18,24 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URISyntaxException;
 import java.util.Timer;
 
 public class consoleApp {
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, ParserConfigurationException, IOException, SAXException {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, ParserConfigurationException, IOException, SAXException, URISyntaxException {
 
 
         Store store = Store.getInstance();
         StoreHelper storeHelper = new StoreHelper(store);
-        storeHelper.fillStore();
+        //storeHelper.fillStore();
         //store.printAllCategoriesAndProducts();
+        Server server = new Server();
+        server.createServer();
+        System.in.read();
+        HttpClient client = new HttpClient();
+
+
 
         //DB operations:
 //        DatabaseHelper databaseHelper = new DatabaseHelper();
@@ -37,14 +46,15 @@ public class consoleApp {
 //        //Looks like the system does not want to execute this method at all:
 //        databaseHelper.populateDatabase();
 //        databaseHelper.printProductsFromDatabase();
-
+//
+/**
         System.out.println("Server starting...");
 
         ConfigurationManager.getInstance().loadConfigurationFile("/Users/allakashevarova/IdeaProjects/OnlineStoreAlla/onlineStore/consoleApp/src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
 
-        System.out.println("Using Port" + conf.getPort());
-        System.out.println("Using WebRoot" + conf.getWebroot());
+        System.out.println("Using Port " + conf.getPort());
+        System.out.println("Using WebRoot " + conf.getWebroot());
 
         ServerSocket serverSocket = new ServerSocket(conf.getPort());
         Socket socket = serverSocket.accept();
@@ -56,7 +66,7 @@ public class consoleApp {
 
         String html = "<html><head><title>Simple Java HTTP Server</title></head><body><h1>Test Page</h1></body></html>";
 
-        final String CRLF = "/n/r";
+        final String CRLF = "\r\n";
 
         String response =
                 "HTTP/1.1 200 OK" + CRLF + //Status Line : HTTP VERSION RESPONSE CODE RESPONSE MESSAGE
@@ -67,10 +77,11 @@ public class consoleApp {
 
         outputStream.write(response.getBytes());
 
+
         inputStream.close();
         outputStream.close();
-        socket.close();;
-        serverSocket.close();
+        socket.close();
+        serverSocket.close();*/
 
         //Start server
 //        ServerHelper serverHelper = new ServerHelper();
