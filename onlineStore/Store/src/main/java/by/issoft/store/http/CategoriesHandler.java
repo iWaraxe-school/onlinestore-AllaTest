@@ -17,9 +17,8 @@ public class CategoriesHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
+// TODO verify why the code below is not working
 
-        String authToken = httpExchange.getRequestHeaders().getFirst("Authorization");
-        if(authToken != null && verifyAuth(authToken)){
             InMemoryStoreFiller msf = new InMemoryStoreFiller();
             List<Category> categories = msf.getListOfCategories();
             ObjectMapper mapper = new ObjectMapper();
@@ -31,16 +30,7 @@ public class CategoriesHandler implements HttpHandler {
             os.write(jsonInBytes);
             os.close();
         }
-        else {
-            byte[] response = "403 - Forbidden".getBytes();
-            httpExchange.sendResponseHeaders(403, response.length);
-            OutputStream os = httpExchange.getResponseBody();
-            os.write(response);
-            os.close();
-        }
 
-
-    }
 
     private static final boolean verifyAuth(String token) {
         String extractedToken = token.substring(6);
